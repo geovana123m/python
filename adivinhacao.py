@@ -1,4 +1,5 @@
 import random
+import jogos
 #declaracao da funcao (def)
 def jogar_adivinhacao():
     
@@ -38,6 +39,9 @@ def jogar_adivinhacao():
      if not acertou:
          print(f"suas tentativas acabaram. o numero secreto era {numero_secreto}")
      print("fim do jogo")
+
+     jogos.escolha_jogos()
+
     
 if __name__ == "__main__":
     jogar_adivinhacao()
