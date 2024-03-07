@@ -1,3 +1,5 @@
+import jogos
+
 def jogar():
     palavra_secreta = "parara"
     letras_acertadas = ["_", "_", "_", "_", "_", "_"]
@@ -19,6 +21,7 @@ def jogar():
         print("parabens, voce ganhou")
     else:
         print(f"voce perdeu{palpalavra_secreta}")
+    jogos.escolha_jogos()
 
 if (__name__ == "__main__"):
     jogar()
