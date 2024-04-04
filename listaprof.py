@@ -1,3 +1,4 @@
+import os
 def mostrar_lista(lista):
     print("Lista:")
     for item in lista:
@@ -21,13 +22,23 @@ def excluir_item(lista):
 
 def gravar_lista(lista):
     nome_arq = input("Digite o nome do arquivo")
-    with open(nome_arq, "w") as arquivo:
+    nome_arq += ".txt"
+    with open(nome_arq, "w") as arquivo: 
         for item in lista:
             arquivo.write(item + "\n")
     print("Aquivo gravado com sucesso", nome_arq)
 
-def carregar_arquivo(lista):
+def listar_arquivo(extensao=".txt"):
+    diretorio = os.getcwd()
+    arquivos = os.listdir(diretorio)
+    print(f"arquivos.{extensao} no diretorio atual:")
+    for lista_arquivo in arquivos:
+        if lista_arquivo.endswith(extensao):
+            print(lista_arquivo)
+
+def carregar_lista(lista):
     nome_arq = input("digite o nome do arquivo para carregar a lista")
+    nome_arq += ".txt"
     try:
         with open(nome_arq, "r") as arquivo:
             lista.clear()
@@ -54,8 +65,9 @@ def main():
         print("2. Excluir uma fruta da lista")
         print("3. Mostrar lista atual")
         print("4. Gravar lista")
-        print("5. Carregar lista")
-        print("6. Sair do programa")
+        print("5. Listar arquivos")
+        print("6. Carregar lista")
+        print("7. Sair do programa")
 
         opcao = input("Opção: ")
 
@@ -68,9 +80,12 @@ def main():
         elif opcao == '4':
             gravar_lista(lista)
         elif opcao == '5':
-            carregar_arquivo(lista)
-        elif opcao == '5':
+            listar_arquivo()
+        elif opcao == '6':
+            carregar_lista(lista)
+        elif opcao == '7':
             print("Saindo do programa.")
+
             break
         else:
             print("Opção inválida. Tente novamente.")
